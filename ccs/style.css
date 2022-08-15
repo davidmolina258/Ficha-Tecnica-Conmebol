@@ -1,0 +1,426 @@
+/*customs properties*/
+:root {
+  --black-color: #000;
+  --primary-color: white;
+  --margin-top-seccion: 60px;
+}
+
+/*reseteo*/
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: sans-serif;
+  line-height: 2;
+  scroll-behavior: smooth;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+img {
+  width: 100%;
+  height: auto;
+}
+h1 {
+  font-size: 2rem;
+}
+h1,
+h2 {
+  text-align: center;
+}
+
+/*---------------------------------------------------------componentes-----------------------------------------------*/
+/*pulso*/
+@keyframes pulse {
+  0% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.logo {
+  color: var(--primary-color);
+  font-style: bold;
+  cursor: pointer;
+}
+.logo:hover {
+  animation: pulse 2s infinite linear;
+}
+/*boton de hoamburguesa*/
+.off-canvas-btn {
+  cursor: pointer;
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 999;
+  width: 2rem;
+  height: 2rem;
+  opacity: 0;
+}
+.off-canvas-grid {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 998;
+  background-color: var(--primary-color);
+  width: 2rem;
+  height: 0.4rem;
+  border-radius: 25%;
+  transform: rotate(0deg) translate(0, -1.2rem);
+  transition: background-color 0.5s ease;
+}
+.off-canvas-grid::after,
+.off-canvas-grid::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0.4rem;
+  background-color: var(--primary-color);
+  border-radius: 25%;
+  transition: transform 0.5s ease;
+}
+.off-canvas-grid::before {
+  transform: translate(0, -0.8rem);
+}
+
+.off-canvas-grid::after {
+  transform: translate(0, 0.4rem);
+}
+/*animacion del boton*/
+.off-canvas-btn:checked + .off-canvas-grid {
+  background-color: transparent;
+}
+.off-canvas-btn:checked + .off-canvas-grid::before {
+  transform: rotate(45deg) translate(0, 0.4rem);
+}
+.off-canvas-btn:checked + .off-canvas-grid::after {
+  transform: rotate(-45deg) translate(0, -0.25rem);
+}
+.off-canvas-btn:checked ~ .off-canvas-menu {
+  transform: translate(0, 0);
+}
+
+/*modal off canvas */
+.off-canvas-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  transform: translate(-100%, 0);
+  transition: transform 0.5s ease;
+}
+.is-active {
+  transform: translate(-100%, 0);
+}
+.container-off-canvas-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+.off-canvas-link {
+  padding: 2rem;
+  text-decoration: none;
+  text-align: center;
+  color: var(--primary-color);
+  width: 100%;
+}
+.off-canvas-link:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+/*sacar el off canvas*/
+
+/*utilities*/ /*no las uSE xD*/
+.bg-black-color {
+  background-color: var(--black-color);
+}
+.padding {
+  padding: 1rem;
+}
+.text-justify {
+  text-align: justify;
+}
+
+/*************site style*/
+
+/***********************************************header*****************************************/
+
+.header-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 30%;
+  opacity: 0;
+  pointer-events: none;
+}
+.menu div {
+  font-size: 1.5vw;
+  cursor: pointer;
+}
+.menu a {
+  fill: var(--primary-color);
+}
+.menu a:hover,
+.menu div:hover {
+  background-color: aquamarine;
+}
+
+.main-container {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3.5rem;
+}
+.slide-nav-container {
+  display: none;
+}
+
+/************************************************seccion federacion***********************************/
+.container-conmebol {
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding: 1rem;
+}
+.container-conmebol > h1 {
+  margin: 1rem;
+}
+
+.container-conmebol p {
+  text-align: justify;
+}
+
+/********************************************************seccion de selecciones******************/
+
+.federaciones-container {
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+}
+
+.images-card img {
+  padding: 1rem;
+  transition: transform 0.5s;
+}
+.images-card img:hover {
+  transform: scale(1.1);
+}
+
+/*****************************************seccion de jugadores***********************/
+.container-jugadores {
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+}
+
+.card-jugador p {
+  text-align: justify;
+}
+
+/***************************************seccion de los estadios**************************/
+.container-estadios {
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+}
+.estadio-card {
+  width: 100%;
+  margin-top: 1rem;
+}
+.estadio-card h4 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/*****************************************tarjetas clasicos-*************************************/
+.container-clasicos {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+.content-card-clasico p {
+  text-align: justify;
+}
+
+/* [id]{
+    background-color: aquamarine;
+}
+a[href]{
+    font-style: italic;
+} */
+/****************footer************/
+.footer {
+  display: none;
+  background-color: var(--black-color);
+  height: 8vh;
+}
+.footer > p {
+  color: var(--primary-color);
+  font-style: italic;
+}
+.footer > aside a {
+  fill: var(--primary-color);
+  padding: 0.5rem;
+}
+aside a:hover {
+  background-color: aquamarine;
+}
+
+/**************************************Media Querys*/
+
+@media screen and (min-width: 37.5em) {
+  [id] {
+    padding-top: var(--margin-top-seccion);
+  }
+  /*quite la hamburguesa*/
+  .off-canvas-grid {
+    display: none;
+  }
+  .off-canvas-btn {
+    pointer-events: none;
+  }
+  .menu {
+    opacity: 100%;
+    pointer-events: auto;
+  }
+  /*subi la cabezera*/
+  .header-container {
+    position: sticky;
+    bottom: 98vh;
+    top: -0.15rem;
+    right: 0;
+    z-index: 999;
+  }
+  /*puse visible el slide-nav*/
+  .main-secction {
+    width: 85vw;
+  }
+  .slide-nav-container {
+    display: block;
+    width: 15vw;
+  }
+  .slide-bar {
+    width: 100%;
+    height: 100vh;
+    position: sticky;
+    top: 2rem;
+    left: 0;
+  }
+  .slide-bar-content {
+    width: inherit;
+    height: inherit;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide-bar-content a {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+    font-family: sans-serif;
+    text-decoration: none;
+    font-style: normal;
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+  .slide-bar-content a:hover {
+    background-color: aquamarine;
+  }
+
+  /*quite el margen de abajo*/
+  .main-container {
+    margin-bottom: 0;
+  }
+
+  /*puse la imagenes a dos columnas de las federaciones*/
+  .images-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .images-card > a {
+    width: 48%;
+  }
+
+  /*acomode a los jugadores*/
+  .card-jugador img {
+    width: 60%;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /*puse la imagenes a dos columnas de los estadios*/
+
+  .estadio-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .estadio-card {
+    width: 48%;
+    height: 350px;
+    transition: transform 0.5s ease;
+  }
+  .estadio-card a > img {
+    max-height: 300px;
+  }
+  .estadio-card:hover {
+    transform: scale(1.1);
+  }
+  /**/
+  .content-card-clasico {
+    margin-top: 2rem;
+  }
+  .content-card-clasico img {
+    max-width: 60%;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /*footer*/
+  .footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 64em) {
+  /*  */
+}
